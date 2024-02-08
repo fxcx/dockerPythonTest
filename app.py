@@ -9,7 +9,5 @@ banco1 = definiciones.banco.Banco.options(name='galicia')
 # print(banco1)
 
 banco1 = definiciones.banco.Banco.depositar_money(deposito=100, sucursales='sucursal', date="11:11")
-print(banco1)
+# print(banco1)
 
-banco1
-print(banco1)
