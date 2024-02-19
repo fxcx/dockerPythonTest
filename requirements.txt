@@ -1,2 +1,1 @@
-gunicorn
-datetime
+Django==5.0.2
