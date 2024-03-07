@@ -12,11 +12,11 @@ BASE_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tasks',
+
 ]
 
 LOCAL_APPS =[
-
+  'tasks',
 ]
 
 THIRD_APPS = [
@@ -93,6 +93,14 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 # Static files (CSS, JavaScript, Images)

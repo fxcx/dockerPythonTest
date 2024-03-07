@@ -1,18 +1,18 @@
 from django.shortcuts import render
-from .models import Task, User
-from .forms import TaskForm
+
+from .models import *
+from .forms import *
 
 # Create your views here.
 
 def addTask(request):
-    if request.method == 'POST':
-        form = TaskForm(request.POST)
+  pass
 
-        if form.is_valid():
-            return print('ffffff')
-        
-    return render(request,'addTasks.html')
 
-# def CreateUser(request):
-#     return render(request, 'createUser.html')
+def addUser(request):
+   pass
 
+
+
+def addComment(request):
+    pass

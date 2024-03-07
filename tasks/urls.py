@@ -1,7 +1,9 @@
 from django.urls import path
-from . import views
+from .views import *
 
 
 urlpatterns = [
-    path('', views.addTask, name=""),
+    path('tasks/', addTask),
+    path('users/', addUser),
+    path('coments/', addComment),
 ]

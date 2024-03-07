@@ -7,8 +7,22 @@ class  Task(models.Model):
     done = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.title
+    
 class User(models.Model):
     username = models.CharField(max_length=200)
-    password = models.CharField(max_length=200)
-    email = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
+    finishedTasks = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.username
+    
+class Comment(models.Model):
+    text = models.TextField()
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.created
