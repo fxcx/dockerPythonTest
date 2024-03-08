@@ -6,12 +6,22 @@
 
 - Modelo de stack MTV
 
-## comandos para diferentes entornos
+## ENTORNO DE DEV
 
-### develop
+### runserver
 
 - python manage.py runserver --settings=config.settings.develop
 
-## a claramos que las migraciones van hacer en el entorno de desarrollo: develop
+## BASE DE DATOS DEFAULT
 
-- python manage.py migrate --settings=config.settings.develop
+### a claramos makemigrations esta en la CPT Tasks en el entorno de desarrollo:develop en la ubicasion de las siguientes carpetas **config.settings.develop**
+
+- python manage.py makemigrations tasks --settings=config.settings.develop
+
+### creamos los modelos en el entorno de desarrollo
+
+python manage.py migrations tasks --settings=config.settings.develop
+
+## ENTORNO DE PRODUCTIONS
+
+## BASE DE DATOS POSTGRESQL
