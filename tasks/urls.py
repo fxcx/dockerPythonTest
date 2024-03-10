@@ -3,8 +3,11 @@ from tasks.views import *
 
 
 urlpatterns = [
-    path('tasks/', addTask),
     path('', index),
-    # path('users/', addUser),
+    path('tasks/', createTask),
+    # path('getTasks/', getTasks),
+
+    path('users/', createUser),
+    path('getUser/', getUser),
     # path('coments/', addComment),
 ]

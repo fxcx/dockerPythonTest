@@ -18,6 +18,11 @@ BASE_APPS = [
 
 LOCAL_APPS =[
     'tasks',
+    'tailwind',
+    'theme',
+    'django_browser_reload',
+   
+
 ]
 
 THIRD_APPS = [
@@ -37,7 +42,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-LOCAL_MIDDLEWARE = []
+LOCAL_MIDDLEWARE = [
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
+]
 
 THIRD_MIDDLEWARE = []
 
@@ -48,7 +55,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': {},
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -110,8 +117,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
+TAILWIND_APP_NAME = 'theme'
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

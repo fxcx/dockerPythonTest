@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class  Task(models.Model):
-    title = models.CharField(max_length=33)
+    tittle = models.CharField(max_length=33)
     description = models.TextField(null=True, blank=True)
     done = models.BooleanField(default=False)
     score = models.IntegerField(default=0)
