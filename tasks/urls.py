@@ -4,10 +4,21 @@ from tasks.views import *
 
 urlpatterns = [
     path('', index),
-    path('tasks/', createTask),
+    
     # path('getTasks/', getTasks),
+    # path('createdTasks/', createTask),
+    # path('updateTasks/', updateTask),
+    # path('deleteTasks/', deleteTask),
 
-    path('users/', createUser),
-    path('getUser/', getUser),
-    # path('coments/', addComment),
+    path('getUsers/', getUser),
+    path('createdUsers/', createUser),
+    path('updateUser/', updateUser),
+    path('deleteUser/', deleteUser),
+
+
+    # path('getComents/', getComents),
+    # path('createdComents/', createdComents),
+    # path('updateComents/', updateComent),
+    # path('deleteComents/', deleteComent),
+
 ]

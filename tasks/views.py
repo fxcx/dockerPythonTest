@@ -3,14 +3,7 @@ from .models import *
 
 # Create your views here.
 def index(req):
-    return render(req,'home.html')
-
-def createTask(request):
-    task = Task(tittle="Tarea 1", description="Descripcion de la tarea")
-    task.save()
-    info = {"message": task}
-    return render(request, 'tasks/createTask.html', info)
-
+    return render(req,'index.html')
 
 
 def createUser(request):
@@ -21,9 +14,18 @@ def createUser(request):
 
     info = {"INFO1": user1, "INFO2": user2}
 
-    return render(request, 'tasks/user/createUser.html',info)
+    return render(request, 'users/created.html',info)
 
 
 def getUser(req):
     user = User.objects.all()
-    return render(req, 'user/getUser.html')
+    return render(req, 'users/get.html')
+
+
+def updateUser(req):
+    user = User.objects.all()
+    return render(req, 'users/update.html')
+
+def deleteUser(req):
+    user = User.objects.all()
+    return render(req, 'users/delete.html')
