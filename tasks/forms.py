@@ -1,19 +1,6 @@
-# from django import forms
-
-# class  TaskForm(forms.forms):
-#     title = forms.CharField(max_length=200)
-   
-#     done = forms.BooleanField(default=False)
-#     created = forms.DateTimeField(auto_now_add=True)
-
- 
-# class UserForm(forms.forms):
-#     username = forms.CharField(max_length=200)
-#     created = forms.DateTimeField(auto_now_add=True)
-#     finishedTasks = forms.IntegerField(default=0)
-
-    
-# class CommentForm(forms.forms):
-#     text = forms.TextField()
-#     created = forms.DateTimeField(auto_now_add=True)
-
+from django import forms
+  
+class formUser(forms.Form):
+    username = forms.CharField(max_length=20)
+    email = forms.EmailField(max_length=30, required=True)
+    password = forms.CharField(max_length=30)

@@ -10,10 +10,10 @@ urlpatterns = [
     # path('updateTasks/', updateTask),
     # path('deleteTasks/', deleteTask),
 
-    path('getUsers/', getUser),
-    path('createdUsers/', createUser),
+    path('getUsers/', getUsers, name='getusers'),
+    path('createUser/', createUser, name='create'),
     path('updateUser/', updateUser),
-    path('deleteUser/', deleteUser),
+    path('deleteUser/<int:user_id>', deleteUser, name='delete'),
 
 
     # path('getComents/', getComents),
