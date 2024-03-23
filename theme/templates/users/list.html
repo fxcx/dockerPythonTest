@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "index.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lista-user</title>
-</head>
 
-<body>
+{%block tasks %}
+
+
     <h1>lista de usarios</h1>
 
 
@@ -17,10 +13,11 @@
         <li>
             usuario: <strong>{{ user }}</strong>, email: {{user.email}}
             <a href="{% url 'delete' user.id %}">x</a>
+            <a href="{% url 'update' user.id %}">edit</a>
         </li>
         {% endfor %}
     </ul>
     {% endif %}
-</body>
+    <a href="{% url 'create' %}">Crear usuario</a>
 
-</html>
+{%endblock%}

@@ -1,16 +1,15 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 
-
-# Create your views here.
 def index(req):
     return render(req, "index.html")
 
 
 def getUsers(req):
     users = User.objects.all()
-    return render(req, "users/list.html", {"users":users})
+    return render(req, "users/list.html", {"users": users})
+
 
 def createUser(req):
     if req.method == "POST":
@@ -20,7 +19,11 @@ def createUser(req):
             email = info["email"]
             result = User.objects.filter(email=email)
             if len(result) > 0:
-                return render(req, "users/create.html", {"message":"ya existe el email","form": form})
+                return render(
+                    req,
+                    "users/create.html",
+                    {"message": "ya existe el email", "form": form},
+                )
             else:
                 newUser = User(
                     username=info["username"],
@@ -28,42 +31,57 @@ def createUser(req):
                     email=info["email"],
                 )
                 newUser.save()
-                return render(req, "users/create.html", {"message":"usuario creado"})
+                return render(req, "users/create.html", {"message": "usuario creado"})
     else:
         form = formUser()
     return render(req, "users/create.html", {"form": form})
 
+'''
+email ingresado                 que tine que pasar
 
-def updateUser(req):
-    return render(req, "users/update.html")
+mismo email                     actualiza
+nuevo email                     actualiza
+email de otro usuario           no se actualiza
+
+'''
+def updateUser(req, user_id):
+    if req.method == "POST":
+        form = formUser(req.POST)
+        if form.is_valid():
+            info = form.cleaned_data
+            email = info["email"]
+            result = User.objects.filter(email=email)
+            should_update = False
+            if len(result) > 0:
+                if result[0].id == user_id:
+                    should_update= True
+            else:
+                should_update= True
+            
+            if should_update:
+                user = User.objects.get(id=user_id)
+                user.username = info["username"]
+                user.password = info["password"]
+                user.email = info["email"]
+                user.save()
+                return render(req, "users/update.html", {"message": "usuario actualizado"})
+            else:
+                return render(
+                    req,
+                    "users/update.html",
+                    {"message": "ya existe el email", "form": form},
+                )
+
+    else:
+        user = User.objects.get(id=user_id)
+        form = formUser(initial={
+            "username": user.username,
+            "email": user.email,
+        })
+        return render(req, "users/update.html", {"form": form})
 
 
-def deleteUser(_req,user_id):
+def deleteUser(_req, user_id):
     user = User.objects.get(id=user_id)
     user.delete()
     return redirect("getusers")
-
-
-# from django.http import HttpResponseRedirect
-# from .forms import NameForm
-
-
-# def get_name(request):
-#     user= ''
-#     # if this is a POST request we need to process the form data
-#     if request.method == "POST":
-
-#         # create a form instance and populate it with data from the request:
-#         form = NameForm(request.POST)
-#         # check whether it's valid:
-#         if form.is_valid():
-#             # process the data in form.cleaned_data as required
-#             # ...
-#             # redirect to a new URL:
-#             # return HttpResponseRedirect("/thanks/")
-#             user = form.cleaned_data['your_name']
-#     # if a GET (or any other method) we'll create a blank form
-#     else:
-#         form = NameForm()
-
-#     return render(request, "users/create.html", {"form": form, "user":user})
