@@ -1,25 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "index.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>update users</title>
-</head>
-
-<body>
-    <h1>Actualizar Usuario</h1>
-    {% if form %}
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form}}
-        <input type="submit" value="update">
-    </form>
-    {% endif %}
-    <p>
-        {{message}}
-    </p>
-    <a href="{% url 'getusers' %}">lista de usuarios</a>
-</body>
-
-</html>
+{% block tasks %}
+<h1>Actualizar Usuario</h1>
+{% if form %}
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="update">
+</form>
+{% endif %}
+<p>
+    {{message}}
+</p>
+<a href="{% url 'getusers' %}">lista de usuarios</a>
+{% endblock  %}

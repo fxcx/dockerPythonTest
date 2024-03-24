@@ -10,6 +10,10 @@ def getUsers(req):
     users = User.objects.all()
     return render(req, "users/list.html", {"users": users})
 
+def getUser(req, user_id):
+    user = User.objects.get(id=user_id)
+    user.get_deferred_fields()
+    return render(req, "users/profile.html", {"user": user})
 
 def createUser(req):
     if req.method == "POST":
@@ -85,3 +89,19 @@ def deleteUser(_req, user_id):
     user = User.objects.get(id=user_id)
     user.delete()
     return redirect("getusers")
+
+
+#? Tasks
+
+def getTasks(req): 
+    user = object.all()
+    return render(req, "tasks/get.html" ,{"tasks":user})
+
+'''
+add tasks                 que tine que pasar
+
+misma tarea                     no se crea
+nuevo tarea                     se crea
+email de otro usuario           no se actualiza
+
+'''

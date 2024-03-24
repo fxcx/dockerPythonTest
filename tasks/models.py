@@ -4,7 +4,7 @@ from django.db import models
 class  Task(models.Model):
     tittle = models.CharField(max_length=33)
     description = models.TextField(null=True, blank=True)
-    done = models.BooleanField(default=False)
+    completed = models.BooleanField(default=False)
     score = models.IntegerField(default=0)
     totals= models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
