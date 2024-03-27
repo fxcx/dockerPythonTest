@@ -8,7 +8,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	{% tailwind_css %}
-
 </head>
 <header>
 	<!-- component -->
@@ -72,7 +71,7 @@
 			<div class="mb-2 p-4">
 				<h5
 					class="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-gray-900">
-					Material Tailwind</h5>
+					home </h5>
 			</div>
 			<nav class="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
 				<div role="button" tabindex="0"
@@ -85,7 +84,7 @@
 								clip-rule="evenodd"></path>
 						</svg>
 					</div>
-					<a href="{% url 'getusers' %}">lista de tareas</a>
+					{% comment %} <a href="{% url '' %}">lista de tareas</a> {% endcomment %}
 				</div>
 				<div role="button" tabindex="0"
 					class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
@@ -97,7 +96,7 @@
 								clip-rule="evenodd"></path>
 						</svg>
 					</div>
-					<a href="{% url 'create' %}">crear tareas</a>
+					{% comment %} <a href="{% url '' %}">crear tareas</a> {% endcomment %}
 				</div>
 				<div role="button" tabindex="0"
 					class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
@@ -125,7 +124,7 @@
 								clip-rule="evenodd"></path>
 						</svg>
 					</div>
-					<a href="{% url 'getUser' user.id %}">Profile</a>
+					<a href="{% url 'getusers' %}">Users</a>
 				</div>
 				<div role="button" tabindex="0"
 					class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
@@ -137,7 +136,7 @@
 								clip-rule="evenodd"></path>
 						</svg>
 					</div>
-					setting
+					setting 
 				</div>
 				<div role="button" tabindex="0"
 					class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">

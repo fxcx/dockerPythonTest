@@ -1,17 +1,17 @@
 from django.urls import path
-from tasks.views import *
+from .views import *
 
 
 urlpatterns = [
     path('', index),
     
-    path('getTasks/', getTasks),
-    # path('createdTasks/', createTask),
+    # path('getTasks/', getTasks),
+    path('createTasks/', createTask),
     # path('updateTasks/', updateTask),
     # path('deleteTasks/', deleteTask),
 
+    # path('user_index/', indexUser, name='user_index'),
     path('getUsers/', getUsers, name='getusers'),
-    path('getUser/<int:user_id>', getUser, name='getUser'),
     path('createUser/', createUser, name='create'),
     path('updateUser/<int:user_id>', updateUser, name='update'),
     path('deleteUser/<int:user_id>', deleteUser, name='delete'),
