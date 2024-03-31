@@ -1,23 +1,22 @@
-{% extends "index.html" %}
+{% extends 'index.html' %}
 
-
-{%block tasks %}
-
-
-    <h1>lista de usarios</h1>
-
+{% block tasks %}
+  <section class="grid place-items-center">
+    <div class="flex justify-center">
+      <h1>lista de usarios</h1>
+    </div>
 
     {% if users %}
-    <ul>
+      <ul class="p-2">
         {% for user in users %}
-        <li>
-            usuario: <strong>{{ user }}</strong>, email: {{user.email}}
+          <li class="p-1">
+            usuario: <strong>{{ user }}</strong>, email: {{ user.email }}
             <a href="{% url 'delete' user.id %}">x</a>
             <a href="{% url 'update' user.id %}">edit</a>
-        </li>
+          </li>
         {% endfor %}
-    </ul>
+      </ul>
     {% endif %}
     <a href="{% url 'create' %}">Crear usuario</a>
-
-{%endblock%}
+  </section>
+{% endblock %}
