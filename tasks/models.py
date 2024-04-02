@@ -20,13 +20,13 @@ class User(models.Model):
     finishedTasks = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.username
+        return f"¨{self.username}, {self.email}"
     
-# class Comment(models.Model):
-#     text = models.TextField()
-#     task = models.ForeignKey(Task, on_delete=models.CASCADE)
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     created = models.DateTimeField(auto_now_add=True)
+class Comment(models.Model):
+    text = models.TextField()
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
 
-#     def __str__(self):
-#         return self.created
+    def __str__(self):
+        return self.created

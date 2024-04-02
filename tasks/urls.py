@@ -5,10 +5,10 @@ from .views import *
 urlpatterns = [
     path('', index),
     
-    # path('getTasks/', getTasks),
-    path('createTasks/', createTask),
-    # path('updateTasks/', updateTask),
-    # path('deleteTasks/', deleteTask),
+    path('getTasks/', getTasks, name='lista_de_tareas'),
+    path('createTasks/', createTask,name='createTask'),
+    path('updateTasks/<int:task_id>', updateTask, name='updateTask'),
+    path('deleteTask/<int:task_id>', deleteTask, name='deleteTask'),
 
     # path('user_index/', indexUser, name='user_index'),
     path('getUsers/', getUsers, name='getusers'),

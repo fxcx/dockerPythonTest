@@ -1,15 +1,12 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
-from .forms import ModelForm
+
 
 
 def index(req):
     return render(req, "index.html")
 
-
-# def indexUser(req):
-#     return render(req, "users/user_index.html")
 
 def getUsers(req):
     users = User.objects.all()
@@ -103,32 +100,61 @@ def deleteUser(_req, user_id):
 
 
 def getTasks(req):
-    user = object.all(Task)
-    return render(req, "tasks/get.html", {"tasks": user})
-
+    tasks = Task.objects.all()
+    return render(req, "tasks/get.html", {"tasks": tasks})
 
 """
-add tasks                 que tine que pasar
+crear tarea                 que tine que pasar
 
-misma tarea                     no se crea
+misma titulo                    no se crea
 nuevo tarea                     se crea
-email de otro usuario           no se actualiza
-
 """
-
-
 def createTask(req):
-    if req.method == "POST":
-        form = FormTask(req.POST)
-        if form.is_valid():
-            form.save()
-            return render(req, "tasks/create.html", {"form": form})
-    else:
+    if req.method == "POST":# cuando se mande
+        form = FormTask(req.POST)# lo guardo en form req.post
+        if form.is_valid(): # esto lo valida
+            print('esta')
+            dic = form.cleaned_data # combierte dic
+            titulo = dic['tittle'] # busco la clave key
+            result = Task.objects.filter(tittle=titulo).exists() # exists verificar la existencia 
+            if result: # si esto es verdad
+             return render(req,"tasks/create.html",{"message":"ya existe","form": form})
+            else:
+             print('esta aca')
+             form.save() # sino lo guarda
+             return render(req, "tasks/create.html",{"message":"tarea creada","form": form})
+    else: # renderiza el formulario igual
         form = FormTask(
             initial={
-                "title": "tarea",
+                "tittle": "tarea",
                 "description": "descripcion",
                 "completed": False,
             }
         )
     return render(req, "tasks/create.html", {"form": form})
+
+"""
+update tarea                 que tine que pasar
+
+edita titulo                    se crea
+titulo existente                no se crea
+descripcion                     si actualiza
+nuevo v cbtarea                 se crea
+
+"""
+def updateTask(req, task_id):
+    if req.method == "POST":
+        task = Task.objects.get(id=task_id)
+        newTask = FormTask(req.POST, instance= task)
+        newTask.save()
+        print('esta aca')
+        return render(req, "tasks/update.html", {"task":"tarea actualizada"})
+    else:
+        task = Task.objects.get(id=task_id)
+        form = FormTask(instance=task)
+        return render(req,"tasks/update.html",{"form":form})
+
+def deleteTask(_req, task_id): # req y id de la tarea
+    task = Task.objects.get(id=task_id) # metodo que busca la tarea con el id del parametro
+    task.delete() # metodo que se usa para eliminar
+    return redirect("lista_de_tareas") 
