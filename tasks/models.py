@@ -1,17 +1,5 @@
 from django.db import models
 
-# # Create your models here.
-class  Task(models.Model):
-    tittle = models.CharField(max_length=33)
-    description = models.TextField(null=True, blank=True)
-    completed = models.BooleanField(default=False)
-    score = models.IntegerField(default=0)
-    totals= models.IntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.tittle
-    
 class User(models.Model):
     username = models.CharField(max_length=20)
     email = models.EmailField(max_length=22)
@@ -20,13 +8,12 @@ class User(models.Model):
     finishedTasks = models.IntegerField(default=0)
 
     def __str__(self):
-        return f"¨{self.username}, {self.email}"
+        return f"{self.username}, {self.email}"
     
 class Comment(models.Model):
-    text = models.TextField()
-    task = models.ForeignKey(Task, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.created
+        return f"{self.user}, {self.task}, {self.text}"

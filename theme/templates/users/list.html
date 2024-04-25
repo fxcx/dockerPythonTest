@@ -11,15 +11,15 @@
           {% for user in users %}
             <li class="p-1">
               usuario: <strong>{{ user }}</strong>, email: {{ user.email }}
-              <a href="{% url 'delete' user.id %}">x</a>
-              <a href="{% url 'update' user.id %}">edit</a>
+              <a href="{% url 'tasks:delete' user.id %}">x</a>
+              <a href="{% url 'tasks:update' user.id %}">edit</a>
             </li>
           {% endfor %}
         </ul>
       {% endif %}
     </div>
       <button>
-        <a  href="{% url 'create' %}">Crear usuario</a>
+        <a  href="{% url 'tasks:create' %}">Crear usuario</a>
       </button>
   </section>
 {% endblock %}
